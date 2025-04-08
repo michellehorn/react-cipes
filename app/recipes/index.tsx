@@ -4,6 +4,8 @@ import RecipeCard from '../../components/recipe-card/RecipeCard';
 import { useRecipes } from '../../hooks/useRecipes';
 import { useState } from 'react';
 import SearchBar from '../../components/search-bar/SearchBar';
+import { Ionicons } from '@expo/vector-icons';
+import { Pressable } from 'react-native';
 
 export default function RecipeList() {
   const { recipes } = useRecipes();
@@ -22,6 +24,7 @@ export default function RecipeList() {
   return (
     <View style={styles.container}>
       <SearchBar value={query} onChange={setQuery} />
+
       <FlatList
         data={filtered}
         keyExtractor={(item) => item.id}
@@ -29,6 +32,9 @@ export default function RecipeList() {
         contentContainerStyle={styles.list}
         showsVerticalScrollIndicator={false}
       />
+      <Pressable style={styles.fab} onPress={() => router.push('/recipes/new')}>
+        <Ionicons name="add" size={28} color="#fff" />
+      </Pressable>
     </View>
   );
 }
@@ -41,5 +47,18 @@ const styles = StyleSheet.create({
   list: {
     padding: 16,
     gap: 12,
+  },
+  fab: {
+    position: 'absolute',
+    right: 24,
+    bottom: 24,
+    backgroundColor: '#ff642c',
+    borderRadius: 30,
+    padding: 16,
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
   },
 });
