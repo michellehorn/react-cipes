@@ -1,4 +1,6 @@
 {
   "name": "reactcipes",
-  "slug": "reactcipes"
+  "slug": "reactcipes",
+  "scheme": "reactcipes",
+  "newArchEnabled": true
 }
