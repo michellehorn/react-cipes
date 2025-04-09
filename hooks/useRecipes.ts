@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Recipe } from '../types/Recipe';
 import { MOCK_RECIPES } from '../mocks/recipes';
 import uuid from 'react-native-uuid';
+import { Alert } from 'react-native';
 
 const STORAGE_KEY = '@reactcipes:favorites';
 const STORAGE_RECIPES = '@reactcipes:custom_recipes';
@@ -30,14 +31,10 @@ export function useRecipes() {
   }, []);
 
   async function toggleFavorite(id: string) {
-    const updated = recipes.map((r) =>
-      r.id === id ? { ...r, isFavorite: !r.isFavorite } : r
-    );
+    const updated = recipes.map((r) => (r.id === id ? { ...r, isFavorite: !r.isFavorite } : r));
     setRecipes(updated);
 
-    const newFavorites = updated
-      .filter((r) => r.isFavorite)
-      .map((r) => r.id);
+    const newFavorites = updated.filter((r) => r.isFavorite).map((r) => r.id);
 
     await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(newFavorites));
   }

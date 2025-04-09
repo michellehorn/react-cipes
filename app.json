@@ -2,5 +2,10 @@
   "name": "reactcipes",
   "slug": "reactcipes",
   "scheme": "reactcipes",
-  "newArchEnabled": true
+  "newArchEnabled": true,
+  "splash": {
+    "image": "./assets/splash.json",
+    "resizeMode": "contain",
+    "backgroundColor": "#ff642c"
+  }
 }

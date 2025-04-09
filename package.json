@@ -41,9 +41,10 @@
     "expo": "^52.0.44",
     "expo-router": "^4.0.20",
     "lottie-react-native": "7.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-native": "^0.73.8",
-    "react-native-uuid": "^2.0.3"
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-native": "0.73.11",
+    "react-native-uuid": "^2.0.3",
+    "expo-splash-screen": "~0.29.22"
   }
 }

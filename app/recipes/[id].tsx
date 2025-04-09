@@ -1,6 +1,6 @@
 import { useLocalSearchParams } from 'expo-router';
 import { useRecipes } from '../../hooks/useRecipes';
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, Alert } from 'react-native';
 import Header from '../../components/header/Header';
 import Button from '../../components/button/Button';
 
@@ -15,6 +15,15 @@ export default function RecipeDetail() {
       <View style={styles.container}>
         <Text style={styles.text}>Recipe not found 😕</Text>
       </View>
+    );
+  }
+
+ async function toggleFavoriteRecipe(id: string, isFavorite: boolean) {
+    await toggleFavorite(id);
+    Alert.alert(
+      isFavorite ? 'Removed from favorites' : 'Added to favorites',
+      isFavorite ? 'Sorry you don`t like this one anymore :(' : 'YAY! You like this one!',
+      [{ text: 'OK' }],
     );
   }
 
@@ -36,7 +45,7 @@ export default function RecipeDetail() {
         <Button
           title={recipe.isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
           icon={recipe.isFavorite ? 'heart-dislike' : 'heart'}
-          onPress={() => toggleFavorite(recipe.id)}
+          onPress={() => toggleFavoriteRecipe(recipe.id, recipe.isFavorite)}
         />
       </View>
     </ScrollView>

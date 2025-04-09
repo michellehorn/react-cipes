@@ -1,7 +1,33 @@
+import { useEffect, useState } from 'react';
+import * as SplashScreen from 'expo-splash-screen';
 import { Tabs } from 'expo-router';
+import { View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
+SplashScreen.preventAutoHideAsync().catch(() => {});
+
 export default function Layout() {
+  const [appReady, setAppReady] = useState(false);
+
+  useEffect(() => {
+    const prepare = async () => {
+      try {
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+      } catch (e) {
+        console.warn('App init failed', e);
+      } finally {
+        setAppReady(true);
+        await SplashScreen.hideAsync();
+      }
+    };
+
+    prepare();
+  }, []);
+
+  if (!appReady) {
+    return <View style={{ flex: 1, backgroundColor: '#ff642c' }} />;
+  }
+
   return (
     <Tabs
       screenOptions={{
@@ -17,9 +43,9 @@ export default function Layout() {
         },
         tabBarStyle: {
           backgroundColor: '#ff642c',
-          borderTopWidth: 0, // 🔥 Remove borda superior
-          elevation: 0, // 🔥 Remove sombra no Android
-          shadowOpacity: 0, // 🔥 Remove sombra no iOS
+          borderTopWidth: 0,
+          elevation: 0,
+          shadowOpacity: 0,
           borderTopLeftRadius: 0,
           borderTopRightRadius: 0,
           height: 90,

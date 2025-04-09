@@ -16,11 +16,11 @@ export default function SplashScreen() {
         duration: 800,
         useNativeDriver: true,
       }).start();
-    }, 2200); // após animação Lottie
+    }, 2200);
 
     const timer2 = setTimeout(() => {
       router.replace('/recipes');
-    }, 4000); // transição após logo
+    }, 4000);
 
     return () => {
       clearTimeout(timer1);
@@ -32,14 +32,14 @@ export default function SplashScreen() {
     <View style={styles.container}>
       {!showLogo ? (
         <LottieView
-          source={require('../assets/splash.json')} // sua animação .json aqui
+          source={require('../assets/splash.json')}
           autoPlay
           loop={false}
           style={styles.lottie}
         />
       ) : (
         <Animated.Image
-          source={require('../assets/logo-white.png')} // logo da marca
+          source={require('../assets/logo-white.png')}
           style={[styles.logo, { opacity: logoOpacity }]}
           resizeMode="contain"
         />
