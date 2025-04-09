@@ -78,6 +78,10 @@ Then:
 
 > _Coming soon: screenshots, animations & video demo_ 🎥
 
+https://github.com/user-attachments/assets/20854c53-8745-4e5a-a661-ad152a26aeb7
+
+
+
 ---
 
 Made with 🍳 and 💛 by Michelle Horn
